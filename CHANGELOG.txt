@@ -2,9 +2,16 @@ master
 ======
 
 Changes:
+ - Remove individual logging configurations in Obspy. Logging can be
+   configured by the user. See documentation of Pythons logging module.
+   Only the FDSN mass downloader automatically configures logging as before,
+   but this behavior can be turned off now. The loglevel keywords are therefore
+   deprecated and have no effect anymore. (see #2720)
  - obspy.core:
    * add option to suppress evalresp sensitivity mismatch warning when removing
      instrument response (see #2677)
+ - obspy.clients.fdsn:
+   * introduce fine-grained FDSN client exceptions (see #2653)
  - obspy.clients.filesystem:
    * add get_waveforms_bulk() method to SDS client (see #2616, #2626)
  - obspy.io.hypodd
@@ -21,8 +28,10 @@ Changes:
  - obspy.io.xseed:
    * fix a bug reading SEED blockettes 48 and 58 which was likely never
      encountered (see #2668)
- - obspy.clients.fdsn:
-   * introduce fine-grained FDSN client exceptions (see #2653)
+ - obspy.scripts
+   * obspy-runtests can take one or two -v flags for a more smooth verbosity
+     control (see #2720)
+   * fix broken "--raise-all-warnings" flag in obspy-runtests (see #2720)
 
 maintenance_1.2.x
 =================
